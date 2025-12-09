@@ -1,0 +1,55 @@
+# .github/rulesets/main-protection.yml
+name: Main Branch Protection
+target: branch
+enforcement: active
+
+# Aplica apenas à branch main
+conditions:
+  ref_name:
+    include:
+      - main
+    exclude: []
+
+# Regras para Pull Requests
+rules:
+  # Requer Pull Request para qualquer push direto
+  - type: pull_request
+    parameters:
+      required_approving_review_count: 1
+      dismiss_stale_reviews_on_push: true
+      require_code_owner_review: false
+      require_last_push_approval: false
+      required_review_thread_resolution: true
+      # Apenas maintainers podem aprovar
+      bypass_actors:
+        - actor_id: $organization-team/gowander-maintainers
+          actor_type: Team
+          bypass_mode: always
+
+  # Requer status checks passando
+  - type: status_check
+    parameters:
+      strict_required_status_checks_policy: true
+      required_status_checks:
+        - context: "build"
+          integration_id: 0
+
+  # Bloqueia pushes diretos
+  - type: creation
+    parameters: {}
+
+  # Bloqueia deleção da branch
+  - type: deletion
+    parameters: {}
+
+  # Requer conversas resolvidas
+  - type: conversation_resolution
+    parameters:
+      require_conversation_resolution: true
+
+# Configurações de bypass (quem pode pular as regras)
+bypass_actors:
+  # A equipe gowander-maintainers pode fazer push direto se necessário
+  - actor_id: $organization-team/gowander-maintainers
+    actor_type: Team
+    bypass_mode: always
