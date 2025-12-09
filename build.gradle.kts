@@ -11,8 +11,13 @@ version = "0.1"
 group = "io.vonkel"
 
 val kotlinVersion=project.properties.get("kotlinVersion")
+
 repositories {
     mavenCentral()
+}
+
+kotlin {
+    jvmToolchain(25)
 }
 
 dependencies {
@@ -32,8 +37,12 @@ dependencies {
 application {
     mainClass = "io.vonkel.ApplicationKt"
 }
+
 java {
-    sourceCompatibility = JavaVersion.toVersion("25")
+    sourceCompatibility = JavaVersion.toVersion("21")
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 
@@ -62,7 +71,5 @@ micronaut {
 
 
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
-    jdkVersion = "25"
+    jdkVersion = "21"
 }
-
-
