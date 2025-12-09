@@ -1,0 +1,117 @@
+# ================================
+# Micronaut / Kotlin / Gradle
+# ================================
+
+# Micronaut CLI & Build
+.micronaut/
+.mvn/
+.m2/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+out/
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Logs
+logs/
+*.log
+log/
+*.log.*
+
+# Arquivos do Sistema Operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs e Editores
+# ================
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+*.eml
+*.sublime-*
+*.code-workspace
+
+# Eclipse
+.settings/
+.project
+.classpath
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.factorypath
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ================================
+# Banco de Dados & Credenciais
+# ================================
+*.db
+*.sqlite
+*.h2.db
+docker-compose.override.yml  # Para overrides locais
+.env
+.env.local
+.env.*.local
+secrets/
+credentials/
+*.p12
+*.keystore
+*.jks
+*.cert
+*.key
+
+# ================================
+# Arquivos de Desenvolvimento
+# ================================
+# Arquivos gerados pelo Micronaut Data
+/generated-*
+
+# Test reports
+/test-results/
+/target/test-reports/
+*.hprof
+
+# ================================
+# Docker (se for usar)
+# ================================
+# Ignore everything in docker build context except Dockerfile and necessary files
+docker/**/*
+!docker/Dockerfile
+!docker/entrypoint.sh
+!docker/*.conf
+
+# ================================
+# Sistema
+# ================================
+*#
+*#
+.#*
+*~
+~*
+
+# ================================
+# Micronaut Native Image (GraalVM)
+# ================================
+native-image-temp/
+*.native-image
