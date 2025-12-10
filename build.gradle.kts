@@ -23,19 +23,29 @@ kotlin {
 dependencies {
     ksp("io.micronaut:micronaut-http-validation")
     ksp("io.micronaut.serde:micronaut-serde-processor")
-    implementation("io.micronaut:micronaut-http-client")
+    ksp("io.micronaut.validation:micronaut-validation-processor")
+
+    implementation("io.micronaut.validation:micronaut-validation")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
+    implementation("io.projectreactor:reactor-core")
+    implementation("jakarta.validation:jakarta.validation-api")
+    implementation("io.micronaut:micronaut-http-client")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.yaml:snakeyaml")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+    
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("io.mockk:mockk:1.13.11")
+    testImplementation("io.projectreactor:reactor-test")
 }
 
 
 application {
-    mainClass = "io.vonkel.ApplicationKt"
+    mainClass = "io.vonkel.gowanderapp.ApplicationKt"
 }
 
 java {
