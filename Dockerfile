@@ -1,8 +1,12 @@
-# Stage 1: Build
-FROM eclipse-temurin:21-jdk AS builder
+# Stage 1: Build do projeto - vamos usar uma máquina que já tem o gradle
+FROM gradle:8.7-jdk21-jammy AS builder
 WORKDIR /workspace
+
+# Copia arquivos do projeto
 COPY . .
-RUN ./gradlew assemble --no-daemon
+
+# Executa o build
+RUN gradle assemble --no-daemon
 
 # Stage 2: Run
 FROM eclipse-temurin:21-jre-jammy
