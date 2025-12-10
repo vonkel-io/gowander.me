@@ -8,9 +8,7 @@ import reactor.core.publisher.Mono
 import java.util.UUID
 
 @Controller("/api/users")
-class UserController(
-    // Injeção do caso de uso (UserService)
-) {
+class UserController() {
 
     @Post
     fun createUser(@Body userRequest: UserRequest): Mono<HttpResponse<UserResponse>> {

@@ -1,4 +1,4 @@
-package io.vonkel.gowanderapp
+package io.vonkel.gowonderapp
 
 import io.micronaut.runtime.EmbeddedApplication
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
