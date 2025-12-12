@@ -13,4 +13,9 @@ FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=builder /workspace/build/libs/*-all.jar app.jar
 EXPOSE 8080
+
+# Adicionar usuário não-root para segurança
+RUN groupadd -r micronaut && useradd -r -g micronaut micronaut
+USER micronaut
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
